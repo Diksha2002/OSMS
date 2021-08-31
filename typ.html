@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" >
+  <title>Download files</title>
+</head>
+<body>
+<p><a href="C:\wamp64\www\com\sem 2\acp\unit1<?php echo $resu?>.pdf">UNIT-1</a></p>
+</body>
+</html>
+<?php
+if(isset($_POST['submit']))
+{
+	$conn=@mysql_connect("localhost","root","");
+	if($conn)
+	{
+		echo "CONNECTED SUCCESSFULLY";
+	}
+	mysql_select_db('project',$conn);
+	
+{
+	$sql=mysql_query($conn,"SELECT * FROM files,add_subject where files.s_name=add_subject.s_name");
+	$result=mysql_fetch_assoc($sql);
+	$resu=$result['s_name'];
+?>
